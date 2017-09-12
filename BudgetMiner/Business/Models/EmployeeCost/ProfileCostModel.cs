@@ -3,7 +3,7 @@ using BudgetMiner.Business.Models._base;
 
 namespace BudgetMiner.Business.Models.EmployeeCost
 {
-    public class EmployeeCostModel : BaseModel
+    public class ProfileCostModel : BaseModel
     {
         [DataType(DataType.Text)]
         [MaxLength(15)]

@@ -1,0 +1,68 @@
+﻿@model BudgetMiner.Business.Models.EmployeeCost.ProfileCostModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<h4>ProfileCostModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FunctionTitle" class="control-label"></label>
+                <input asp-for="FunctionTitle" class="form-control" />
+                <span asp-validation-for="FunctionTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FunctionDescription" class="control-label"></label>
+                <input asp-for="FunctionDescription" class="form-control" />
+                <span asp-validation-for="FunctionDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaseJunior" class="control-label"></label>
+                <input asp-for="BaseJunior" class="form-control" />
+                <span asp-validation-for="BaseJunior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaseMedior" class="control-label"></label>
+                <input asp-for="BaseMedior" class="form-control" />
+                <span asp-validation-for="BaseMedior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaseSenior" class="control-label"></label>
+                <input asp-for="BaseSenior" class="form-control" />
+                <span asp-validation-for="BaseSenior" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnualIncrease" class="control-label"></label>
+                <input asp-for="AnnualIncrease" class="form-control" />
+                <span asp-validation-for="AnnualIncrease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstructionsHTML" class="control-label"></label>
+                <input asp-for="InstructionsHTML" class="form-control" />
+                <span asp-validation-for="InstructionsHTML" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
