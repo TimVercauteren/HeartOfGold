@@ -1,7 +1,7 @@
 ﻿
-namespace BudgetMiner.DataAccess.Entities.EmployeeCost
+namespace BudgetMiner.DataAccess.Entities
 {
-    public class Function
+    public class Function : EntityBase
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -9,5 +9,12 @@ namespace BudgetMiner.DataAccess.Entities.EmployeeCost
         public decimal BaseMedior { get; set; }
         public decimal BaseSenior { get; set; }
         public decimal AnnualIncrease { get; set; }
+        public Seniority MyProperty { get; set; }
+    }
+    public enum Seniority
+    {
+        Junior,
+        Medior,
+        Senior
     }
 }
