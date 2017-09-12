@@ -9,6 +9,5 @@
         public decimal? Y3 { get; set; }
         public decimal? Y4 { get; set; }
         public decimal? Y5 { get; set; }
-
     }
 }

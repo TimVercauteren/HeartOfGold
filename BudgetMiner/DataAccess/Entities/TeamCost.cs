@@ -2,7 +2,7 @@
 
 namespace BudgetMiner.DataAccess.Entities
 {
-    public class Team : EntityBase
+    public class TeamCost : EntityBase
     {
         public string Title { get; set; }
         public string Description { get; set; }
