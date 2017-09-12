@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using BudgetMiner.Business.Models.EmployeeCost;
 
 namespace BudgetMiner.Api.Controllers
@@ -23,7 +19,7 @@ namespace BudgetMiner.Api.Controllers
                 BaseMedior = 2500,
                 BaseSenior = 3000,
                 FunctionTitle = "Titel Functie",
-                InstructionsHTML = "<p>De instructies</p>"
+                //InstructionsHTML = "<p>De instructies</p>"
             };
 
             return Ok(mock);
