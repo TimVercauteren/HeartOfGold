@@ -10,7 +10,7 @@ namespace BudgetMiner.Api.Controllers
         {
             //Reader logic here, mocking for now
 
-            //replace mock 
+            //Replace mock 
             var mock = new ProfileCostModel()
             {
                 FunctionDescription = "Beschrijving functie",
