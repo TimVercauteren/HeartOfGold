@@ -1,0 +1,9 @@
+﻿{
+  "ConnectionStrinng": {
+    "Host": "",
+    "Port": "",
+    "DbName": "",
+    "User": "",
+    "Password": ""
+  }
+}

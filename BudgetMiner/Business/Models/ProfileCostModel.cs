@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using BudgetMiner.Business.Models._base;
 
-namespace BudgetMiner.Business.Models.EmployeeCost
+namespace BudgetMiner.Business.Models
 {
     public class ProfileCostModel : BaseModel
     {
@@ -29,7 +29,7 @@ namespace BudgetMiner.Business.Models.EmployeeCost
         [DataType(DataType.Currency)]
         [Display(Name = "Annual increase of the salary")]
         public decimal AnnualIncrease { get; set; }
-        //[Required]
-        //public string InstructionsHTML { get; set; }
+        [Required]
+        public HtmlInstructionsViewModel InstructionsHTML { get; set; }
     }
 }

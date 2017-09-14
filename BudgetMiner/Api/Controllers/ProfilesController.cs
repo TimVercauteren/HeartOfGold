@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using BudgetMiner.Business.Models.EmployeeCost;
+﻿using BudgetMiner.Business.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetMiner.Api.Controllers
 {
@@ -19,7 +19,10 @@ namespace BudgetMiner.Api.Controllers
                 BaseMedior = 2500,
                 BaseSenior = 3000,
                 FunctionTitle = "Titel Functie",
-                //InstructionsHTML = "<p>De instructies</p>"
+                InstructionsHTML = new HtmlInstructionsViewModel()
+                {
+                    Content = "<p>HTML Testcontent</p>"
+                }
             };
 
             return Ok(mock);

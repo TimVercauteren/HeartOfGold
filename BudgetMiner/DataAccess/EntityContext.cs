@@ -29,6 +29,7 @@ namespace BudgetMiner.DataAccess
                 c.HasColumnName(newName);
             });
 
+            //Configure db relationships here
             var applicationBuilder = modelBuilder.Entity<Application>();
             //
             var baseMaintenanceBuilder = modelBuilder.Entity<BaseMaintenance>();
@@ -51,7 +52,6 @@ namespace BudgetMiner.DataAccess
             //
             var teamCostComponentBuilder = modelBuilder.Entity<TeamCost>();
             //
-
         }
     }
 }
