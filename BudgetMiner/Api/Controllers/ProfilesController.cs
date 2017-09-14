@@ -24,7 +24,7 @@ namespace BudgetMiner.Api.Controllers
                     Content = "<p>HTML Testcontent</p>"
                 }
             };
-
+            ViewBag.Content = mock.InstructionsHTML.Content;
             return Ok(mock);
         }
 

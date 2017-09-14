@@ -53,8 +53,18 @@
         </form>
     </div>
     <div class="col-md-6">
-        @*@Html.Partial("Instructions", Model.InstructionsHTML);*@
-        @Html.Partial("Instructions") @*Model moet er nog bij komen*@
+        @{ 
+            string instructies;
+            if (ViewBag.Content != null)
+            {
+                 instructies = ViewBag.Content;
+            }
+            else
+            {
+                 instructies = "<h3>Lege instructies</h3>";
+            }
+        }
+        @Html.Partial("Instructions", instructies)
     </div>
 </div>
 
