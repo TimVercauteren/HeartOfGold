@@ -19,10 +19,6 @@ namespace BudgetMiner.Api.Controllers
                 BaseMedior = 2500,
                 BaseSenior = 3000,
                 FunctionTitle = "Titel Functie",
-                InstructionsHTML = new HtmlInstructionsViewModel()
-                {
-                    Content = "<p>HTML Testcontent</p>"
-                }
             };
             ViewBag.Content = mock.InstructionsHTML.Content;
             return Ok(mock);

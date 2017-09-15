@@ -48,21 +48,14 @@
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save data" class="btn btn-default"/>
+                <input type="submit" value="Data complete" class="btn btn-success" />
             </div>
         </form>
     </div>
     <div class="col-md-6">
         @{ 
-            string instructies;
-            if (ViewBag.Content != null)
-            {
-                 instructies = ViewBag.Content;
-            }
-            else
-            {
-                 instructies = "<h3>Lege instructies</h3>";
-            }
+            string instructies = ""; //voeg instructies hier toe;
         }
         @Html.Partial("Instructions", instructies)
     </div>
