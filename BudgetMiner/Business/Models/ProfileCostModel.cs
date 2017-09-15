@@ -10,6 +10,7 @@ namespace BudgetMiner.Business.Models
         [Required]
         [Display(Name = "Function")]
         public string FunctionTitle { get; set; }
+        [DataType(DataType.Text)]
         [Required]
         [Display(Name = "Function Description")]
         public string FunctionDescription { get; set; }
@@ -25,11 +26,9 @@ namespace BudgetMiner.Business.Models
         [Required]
         [Display(Name = "Base salary for senior profiles")]
         public decimal BaseSenior { get; set; }
-        [Required]
         [DataType(DataType.Currency)]
+        [Required]
         [Display(Name = "Annual increase of the salary")]
         public decimal AnnualIncrease { get; set; }
-        [Required]
-        public HtmlInstructionsViewModel InstructionsHTML { get; set; }
     }
 }

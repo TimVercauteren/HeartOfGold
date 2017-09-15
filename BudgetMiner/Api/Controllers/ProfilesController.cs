@@ -20,7 +20,6 @@ namespace BudgetMiner.Api.Controllers
                 BaseSenior = 3000,
                 FunctionTitle = "Titel Functie",
             };
-            ViewBag.Content = mock.InstructionsHTML.Content;
             return Ok(mock);
         }
 
