@@ -14,9 +14,11 @@ namespace BudgetMiner.DataAccess.Entities
         public string Description { get; set; }
         public DateTime FirstInUse { get; set; }
         public string HoursOfOperation { get; set; }
+        //De link naar department
+        public Department Department { get; set; }
     }
 
-    public class Departments {
+    public class Department {
         [Key]
         public int DepartmentsId { get; set; }
         [Required]
@@ -24,6 +26,7 @@ namespace BudgetMiner.DataAccess.Entities
         public int? NumberOfUsers { get; set; }
         // foreign key naar System
         public int SystemId { get; set; }
+        public System System { get; set; }
     }
 
     public class HostingType {

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using BudgetMiner.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace BudgetMiner
 {
@@ -18,9 +20,14 @@ namespace BudgetMiner
 
         public IConfiguration Configuration { get; }
 
+        private const string connectionLocal = @"Server=(localdb)\mssqllocaldb;Database=Budgetminer;Trusted_Connection=True;";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<EntityContext>(options => options.UseSqlServer(connectionLocal));
+
             services.AddMvc();
         }
 
