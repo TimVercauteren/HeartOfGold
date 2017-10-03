@@ -18,7 +18,7 @@ namespace BudgetMiner.DataAccess.Entities
 
     public class Departments {
         [Key]
-        public int DepartmetnsId { get; set; }
+        public int DepartmentsId { get; set; }
         [Required]
         public string Name { get; set; }
         public int? NumberOfUsers { get; set; }
@@ -56,5 +56,62 @@ namespace BudgetMiner.DataAccess.Entities
         public int ProfileId { get; set; }    
     }
 
+    public class Applications {
+        [Key]
+        public int ApplicationId { get; set; }
+        [Required]
+        public string Description { get; set; }
+        public string Manufacturere { get; set; }
+        //foreign key naar hostingtype
+        public int HostingTypeId { get; set; }
+        //foreign key naar system
+        public int SystemId { get; set; }
+    }
 
+    public class SWComponent {
+        [Key]
+        public int SWComponentId { get; set; }
+        [Required]
+        public string Description { get; set; }
+        //foreign keyn naar applicatio
+        public int ApplicationId { get; set; }
+    }
+
+    public class LicenseCost {
+        [Key]
+        public int LicenseCostId { get; set; }
+        public float Y1 { get; set; }
+        public float? Y2 { get; set; }
+        public float? Y3 { get; set; }
+        public float? Y4 { get; set; }
+        public float? Y5 { get; set; }
+        //foreign key naar departments
+        public int Budegetowner { get; set; }
+        //foreign key naar SWComonentsId
+        public int SWComponentsId { get; set; }
+    }
+
+    public class Maintenance {
+        [Key]
+        public int MaintenanceCostId { get; set; }
+        public float Y1 { get; set; }
+        public float? Y2 { get; set; }
+        public float? Y3 { get; set; }
+        public float? Y4 { get; set; }
+        public float? Y5 { get; set; }
+        //foreign key naar departments
+        public int Budegetowner { get; set; }
+        //foreign key naar SWComonentsId
+        public int SWComponentsId { get; set; }
+    }
+
+    public class Customizations {
+        [Key]
+        public int CustomizationsId { get; set; }
+        public int? NumberOfCustomizations { get; set; }
+        public int? YearlyGrowth { get; set; }
+        //foreign key naar application
+
+
+    }
 }
