@@ -6,7 +6,7 @@ namespace BudgetMiner.DataAccess
     public class EntityContext : DbContext
     {
         public DbSet<DataAccess.Entities.System> Systems { get; set; }
-        public DbSet<Departments> Departments { get; set; }
+        public DbSet<Department> Departments { get; set; }
         public DbSet<HostingType> HostingTypes { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Profiles> Profiles { get; set; }
@@ -14,7 +14,13 @@ namespace BudgetMiner.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //hier de models configureren
+            var systemBuilder = modelBuilder.Entity<DataAccess.Entities.System>()
+                .HasOne(s => s.Department)
+                .WithOne(d => d.System)
+                .HasForeignKey("SystemId"); //toDo check 
+
+
+                
         }
     }
 }
