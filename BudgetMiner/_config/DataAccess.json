@@ -1,9 +1,8 @@
 ﻿{
-  "ConnectionStrinng": {
-    "Host": "",
-    "Port": "",
-    "DbName": "",
-    "User": "",
-    "Password": ""
+  "ConnectionString": {
+    "Host": "budgetminer.database.windows.net",
+    "User": "budgetminer",
+    "Password": "Hilded100",
+    "DbName": "budgetminer"
   }
 }

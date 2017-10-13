@@ -8,25 +8,38 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BudgetMiner.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
 
 namespace BudgetMiner
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment environment)
         {
-            Configuration = configuration;
+            var appEnv = PlatformServices.Default.Application;
+            ApplicationBasePath = appEnv.ApplicationBasePath;
+            ConfigurationPath = Path.Combine(environment.ContentRootPath, "_config");
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(ConfigurationPath)
+                .AddJsonFile("dataaccess.json");
+
+            Configuration = builder.Build();
         }
 
-        public IConfiguration Configuration { get; }
+        public string ApplicationBasePath { get; private set; }
+        public string ConfigurationPath { get; private set; }
+        public IConfigurationRoot Configuration { get; private set; }
 
-        private const string connectionLocal = @"Server=(localdb)\mssqllocaldb;Database=Budgetminer;Trusted_Connection=True;";
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EntityContext>(options => options.UseSqlServer(GetConnectionString()));
 
-            services.AddDbContext<EntityContext>(options => options.UseSqlServer(connectionLocal));
+
 
             services.AddMvc();
         }
@@ -52,6 +65,20 @@ namespace BudgetMiner
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private string GetConnectionString()
+        {
+            var configSection = Configuration.GetSection("ConnectionString");
+
+            var host = configSection.GetValue<string>("Host");
+            var dbname = configSection.GetValue<string>("DbName");
+            var user = configSection.GetValue<string>("User");
+            var pwd = configSection.GetValue<string>("Password");
+
+            var sqlConnectionString = $"Server = tcp:budgetminer.database.windows.net,1433; Initial Catalog = budgetminer; Persist Security Info = False; User ID = { user }; Password ={ pwd }; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30";
+
+            return sqlConnectionString;
         }
     }
 }
