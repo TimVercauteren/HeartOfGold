@@ -1,0 +1,38 @@
+﻿@model BudgetMiner.Business.Models.YearCostModel
+
+<h4>YearCostModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="YearlyCostView">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LicenseDepreciation" class="control-label"></label>
+                <input asp-for="LicenseDepreciation" class="form-control" />
+                <span asp-validation-for="LicenseDepreciation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaintenanceCost" class="control-label"></label>
+                <input asp-for="MaintenanceCost" class="form-control" />
+                <span asp-validation-for="MaintenanceCost" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

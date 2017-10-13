@@ -1,57 +1,44 @@
 ﻿using BudgetMiner.DataAccess.Entities;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using BudgetMiner.Business.Models;
 
 namespace BudgetMiner.DataAccess
 {
     public class EntityContext : DbContext
     {
-        public EntityContext() : base("name=EntityContext"){}
-        public virtual DbSet<Application> Application { get; set; }
-        public virtual DbSet<BaseMaintenance> BaseMaintenance { get; set; }
-        public virtual DbSet<BaseMaintenanceCycle> BaseMaintenanceCycle { get; set; }
-        public virtual DbSet<BaseManagement> BaseManagement { get; set; }
-        public virtual DbSet<Function> Function { get; set; }
-        public virtual DbSet<HelpDeskUsers> HelpDeskUsers { get; set; }
-        public virtual DbSet<LicenseComponent> LicenseComponents { get; set; }
-        public virtual DbSet<Licensing> Licesing { get; set; }
-        public virtual DbSet<Maintenance> Maintenance { get; set; }
-        public virtual DbSet<MaintenanceComponent> MaintenanceComponent { get; set; }
-        public virtual DbSet<TeamCost> TeamCost { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public EntityContext(DbContextOptions options) : base(options) { }
+        public DbSet<Application> Applications { get; set; }
+        public DbSet<Component> Components { get; set; }
+        public DbSet<YearCost> YearlyCosts { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            var appBuilder = modelBuilder.Entity<Application>();
+            appBuilder.HasKey(a => a.Id);
+            //toDo::Configure Properties
 
-            //Config for lowercase properties in DB
-            modelBuilder.Properties().Configure(c =>
-            {
-                var name = c.ClrPropertyInfo.Name;
-                var newName = name.ToLower();
-                c.HasColumnName(newName);
-            });
+            var componentBuilder = modelBuilder.Entity<Component>();
+            componentBuilder.HasKey(c => c.Id);
+            componentBuilder
+                .HasOne(c => c.Application)
+                .WithMany(a => a.Components)
+                .HasForeignKey(c => c.ApplicationId);
+            //toDo:: Configure properties
 
-            //Configure db relationships here
-            var applicationBuilder = modelBuilder.Entity<Application>();
-            //
-            var baseMaintenanceBuilder = modelBuilder.Entity<BaseMaintenance>();
-            //
-            var baseMaintenanceCycleBuilder = modelBuilder.Entity<BaseMaintenanceCycle>();
-            //
-            var baseManagementBuilder = modelBuilder.Entity<BaseManagement>();
-            //
-            var functionBuilder = modelBuilder.Entity<Function>();
-            //
-            var helpDeskUserBuilder = modelBuilder.Entity<HelpDeskUsers>();
-            //
-            var licenseComponentBuilder = modelBuilder.Entity<LicenseComponent>();
-            //
-            var licensingBuilder = modelBuilder.Entity<Licensing>();
-            //
-            var maintenanceBuilder = modelBuilder.Entity<Maintenance>();
-            //
-            var maintenanceComponentBuilder = modelBuilder.Entity<MaintenanceComponent>();
-            //
-            var teamCostComponentBuilder = modelBuilder.Entity<TeamCost>();
-            //
+            var yearlyCostBuilder = modelBuilder.Entity<YearCost>();
+            yearlyCostBuilder.HasKey(yc => yc.Id);
+            yearlyCostBuilder
+                .HasOne(yc => yc.Component)
+                .WithMany(c => c.YearlyCosts)
+                .HasForeignKey(yc => yc.ComponentId);
+            //toDO:: Configure Properties
         }
+
+        public DbSet<BudgetMiner.Business.Models.ApplicationModel> ApplicationModel { get; set; }
+
+        public DbSet<BudgetMiner.Business.Models.ComponentModel> ComponentModel { get; set; }
+
+        public DbSet<BudgetMiner.Business.Models.YearCostModel> YearCostModel { get; set; }
+
     }
 }
