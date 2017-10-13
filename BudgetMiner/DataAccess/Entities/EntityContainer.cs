@@ -34,11 +34,6 @@ namespace BudgetMiner.DataAccess.Entities
 
         public int ApplicationId { get; set; }
         public Application Application { get; set; }
-
-        internal Task<Task<System.ComponentModel.Component>> ToList()
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public class YearCost : EntityBase
