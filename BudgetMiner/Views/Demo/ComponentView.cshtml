@@ -1,0 +1,48 @@
+﻿@model BudgetMiner.Business.Models.ComponentModel
+
+<h4>ComponentModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ComponentView">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LicenseCost" class="control-label"></label>
+                <input asp-for="LicenseCost" class="form-control" />
+                <span asp-validation-for="LicenseCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainCost" class="control-label"></label>
+                <input asp-for="MainCost" class="form-control" />
+                <span asp-validation-for="MainCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearPercentIncrease" class="control-label"></label>
+                <input asp-for="YearPercentIncrease" class="form-control" />
+                <span asp-validation-for="YearPercentIncrease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BudgetOwner" class="control-label"></label>
+                <input asp-for="BudgetOwner" class="form-control" />
+                <span asp-validation-for="BudgetOwner" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

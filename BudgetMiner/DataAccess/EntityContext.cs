@@ -1,5 +1,6 @@
 ﻿using BudgetMiner.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
+using BudgetMiner.Business.Models;
 
 namespace BudgetMiner.DataAccess
 {
@@ -32,6 +33,12 @@ namespace BudgetMiner.DataAccess
                 .HasForeignKey(yc => yc.ComponentId);
             //toDO:: Configure Properties
         }
+
+        public DbSet<BudgetMiner.Business.Models.ApplicationModel> ApplicationModel { get; set; }
+
+        public DbSet<BudgetMiner.Business.Models.ComponentModel> ComponentModel { get; set; }
+
+        public DbSet<BudgetMiner.Business.Models.YearCostModel> YearCostModel { get; set; }
 
     }
 }

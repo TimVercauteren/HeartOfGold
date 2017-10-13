@@ -8,6 +8,8 @@ namespace BudgetMiner.Shared
     {
         [JsonProperty("model")]
         public TModel Model { get; set; }
+        [JsonProperty("code")]
+        public int Code { get; set; }
     }
 
     public class HalResult<TModel> where TModel : ModelBase
@@ -16,5 +18,7 @@ namespace BudgetMiner.Shared
         public IEnumerable<TModel> Embedded { get; set; }
         [JsonProperty("page")]
         public Page Page { get; set; }
+        [JsonProperty("code")]
+        public int Code { get; set; }
     }
 }
