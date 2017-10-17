@@ -8,20 +8,16 @@ namespace HeartOfGold.Business.Readers
 {
     public class ComponentReader : IComponentReader
     {
-        private EntityContext _context;
+        private EntityContext Context => Context as EntityContext;
 
-        public ComponentReader(EntityContext context)
-        {
-            _context = context;
-        }
         public async Task<Component> Get(int componentId)
         {
-            return await _context.Components.FirstOrDefaultAsync(c => c.Id == componentId);
+            return await Context.Components.FirstOrDefaultAsync(c => c.Id == componentId);
         }
 
         public async Task<IEnumerable<Component>> GetAll()
         {
-            return await _context.Components.ToListAsync();
+            return await Context.Components.ToListAsync();
         }
     }
 }

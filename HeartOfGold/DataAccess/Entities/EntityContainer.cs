@@ -14,6 +14,7 @@ namespace HeartOfGold.DataAccess.Entities
     }
     public class Application : EntityBase
     {
+        public string Name { get; set; }
         public string Description { get; set; }
         public DateTime FirstUse { get; set; }
         public int NumberOfUsers { get; set; }

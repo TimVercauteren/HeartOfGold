@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HeartOfGold.Business.Writers
 {
-    interface IApplicationWriter
+    public interface IApplicationWriter
     {
-        Task Insert(Application application);
-        Task Update(Application application, int id);
+        void Insert(Application application);
+        void Update(Application application, int id);
     }
 }

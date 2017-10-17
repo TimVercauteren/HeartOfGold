@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace HeartOfGold
 {
-    public class HeartOfGoldException : Exception
+    public class BusinessException : Exception
     {
-        public HeartOfGoldException(string errorMessage)
+        public BusinessException(string errorMessage)
         {
             ErrorMessage = errorMessage;
         }

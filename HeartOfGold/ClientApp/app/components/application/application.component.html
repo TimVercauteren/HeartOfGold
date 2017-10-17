@@ -1,0 +1,115 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Application
+    </div>
+    <div class="panel-body">
+        <form (ngSubmit)="save()"
+              class="form-horizontal"
+              novalidate
+              [formGroup]="applicationForm">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-2 control-label"
+                           for="nameId">Name:</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="firstNameId"
+                               type="text"
+                               placeholder="Name the application"
+                               required
+                               formControlName="name" />
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label"
+                           for="descriptionId">Description:</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control"
+                                  id="descriptionId"
+                                  placeholder="Describe the application"
+                                  required
+                                  rows="4"
+                                  formControlName="description" ></textarea>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label"
+                           for="firstInUseId">First in use:</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="firstInUseId"
+                               type="date"
+                               placeholder="The date when the application was introduced"
+                               required
+                               formControlName="firstInUse" />
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label"
+                           for="numberOfUsersId">Number of users:</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="numberOfUsersId"
+                               type="number"
+                               placeholder="The amount that use the application"
+                               required
+                               formControlName="numberOfUsers" />
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-md-2 control-label"
+                           for="manufacturerId">Manufacturer:</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="manufacturerId"
+                               type="text"
+                               placeholder="The manufacturer of the application"
+                               required
+                               formControlName="manufacturer" />
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label"
+                           for="budgetOwnerId">Budget owner:</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="budgetOwnerId"
+                               type="text"
+                               placeholder="The budget owner of the application"
+                               required
+                               formControlName="budgetOwner" />
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span>
+                            <button class="btn btn-primary"
+                                    type="submit"> Save Data
+                                    <!--[disabled]="!applicationForm.valid">-->
+                            </button>
+                        </span>
+                        <span>
+                            <button class="btn btn-primary"
+                                    type="button"
+                                    (click)="populateForm()"> Get Data
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -39,9 +39,12 @@ namespace HeartOfGold
         {
             services.AddDbContext<EntityContext>(options => options.UseSqlServer(GetConnectionString()));
 
-
+            services.AddCors();
 
             services.AddMvc();
+
+            services.AddServices();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +59,14 @@ namespace HeartOfGold
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseCors((policy) =>
+            {
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+                policy.AllowAnyOrigin();
+                policy.AllowCredentials();
+            });
 
             app.UseStaticFiles();
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HeartOfGold.Business.Writers
 {
-    public class WriterException : HeartOfGoldException
+    public class WriterException : BusinessException
     {
         public WriterException(string errorMessage = "Error occured while writing to database")
             : base(errorMessage) { }
