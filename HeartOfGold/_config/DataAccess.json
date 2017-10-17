@@ -1,0 +1,8 @@
+﻿{
+  "ConnectionString": {
+    "Host": "HeartOfGold.database.windows.net",
+    "User": "HeartOfGold",
+    "Password": "Hilded100",
+    "DbName": "HeartOfGold"
+  }
+}
